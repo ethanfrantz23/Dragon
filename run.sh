@@ -1,0 +1,1 @@
+docker run --rm -it -e DISPLAY=docker.for.mac.host.internal:0 -v "$(pwd)":/app pydisplay-app

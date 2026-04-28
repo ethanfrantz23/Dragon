@@ -1,0 +1,9 @@
+{
+    "urls": [
+        [
+            "wavplayer.py",
+            "github:miketeachman/micropython-i2s-examples/examples/wavplayer.py"
+        ]
+    ],
+    "version": "0.1"
+}
