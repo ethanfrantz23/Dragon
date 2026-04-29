@@ -1,20 +1,16 @@
-import os
-import time
-from machine import Pin
+import asyncio
+import esp32
+import machine
+from machine import deepsleep,Pin
 
-from wavplayer import WavPlayer
+from audio import play
 
-wp = WavPlayer(
-    id=0,
-    sck_pin=Pin(5),
-    ws_pin=Pin(4),
-    sd_pin=Pin(6),
-    ibuf=40000,
-    root='/files',
-)
+async def main():
+    await play()
 
-wp.play("dragon.wav", loop=False)
-# wait until the entire WAV file has been played
-while wp.isplaying() == True:
-    # other actions can be done inside this loop during playback
-    pass
+if machine.reset_cause() == machine.DEEPSLEEP_RESET:
+    asyncio.run(main())
+pin = Pin(15,Pin.IN)
+
+esp32.wake_on_ext1([pin],esp32.WAKEUP_ANY_HIGH if pin.value() == 0 else esp32.WAKEUP_ALL_LOW)
+deepsleep()
