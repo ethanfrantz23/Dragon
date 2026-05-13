@@ -8,8 +8,8 @@ async def play():
     audio_out = I2S(
         0,
         sck=Pin(5),
-        ws=Pin(4),
-        sd=Pin(6),        
+        ws=Pin(6),
+        sd=Pin(4),
         ibuf=40000,
         mode=I2S.TX,
         bits=16,
@@ -17,7 +17,7 @@ async def play():
         rate=16000,
     )
 
-    wav = open("/files/{}".format("dragon.wav"), "rb")
+    wav = open("/files/{}".format("dragon_clean.wav"), "rb")
 
     swriter = asyncio.StreamWriter(audio_out)
 
