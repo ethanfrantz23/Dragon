@@ -6,13 +6,14 @@ from machine import deepsleep,Pin
 import time
 
 from audio import play
+from ble import killPrince
 from servo import animate_servo, Servo
 
 async def main():
     with open('files/angles.json', 'r') as f:
         angles = json.load(f)
     servo = Servo(1)
-    await asyncio.gather(play(), animate_servo(servo, angles, 2, 800))
+    await asyncio.gather(killPrince(), play(), animate_servo(servo, angles, 2, 800))
 
 print('reset cause: ', machine.reset_cause())
 if machine.reset_cause() == machine.DEEPSLEEP_RESET:

@@ -2,7 +2,7 @@ import asyncio
 from machine import Pin
 from neopixel import NeoPixel
 
-pin = Pin(18, Pin.OUT)
+pin = Pin(2, Pin.OUT)
 np = NeoPixel(pin, 1)
 
 class ColorMode:
